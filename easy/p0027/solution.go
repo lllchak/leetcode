@@ -26,18 +26,14 @@ Constraints:
 */
 
 func removeElement(nums *[]int, target int) int {
-	if len(*nums) == 0 {
-		return 0
-	}
+	insertIdx := 0
 
-	insertIdx := len(*nums) - 1
-
-	for idx := insertIdx; idx >= 0; idx-- {
-		if (*nums)[idx] == target {
-			(*nums)[insertIdx], (*nums)[idx] = (*nums)[idx], (*nums)[insertIdx]
-			insertIdx--
+	for idx := 0; idx < len(*nums); idx++ {
+		if (*nums)[idx] != target {
+			(*nums)[insertIdx] = (*nums)[idx]
+			insertIdx++
 		}
 	}
 
-	return insertIdx + 1
+	return insertIdx
 }
